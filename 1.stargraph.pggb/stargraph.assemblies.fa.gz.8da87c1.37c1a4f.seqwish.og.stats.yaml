@@ -1,0 +1,116 @@
+---
+length: 55698631
+nodes: 689506
+edges: 929007
+paths: 122
+steps: 3059322
+num_weakly_connected_components: 21
+weakly_connected_components: 
+  - component:
+      id: 0
+      nodes: 689266
+      is_acyclic: 'no'
+  - component:
+      id: 1
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 2
+      nodes: 212
+      is_acyclic: 'no'
+  - component:
+      id: 3
+      nodes: 10
+      is_acyclic: 'yes'
+  - component:
+      id: 4
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 5
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 6
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 7
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 8
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 9
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 10
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 11
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 12
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 13
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 14
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 15
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 16
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 17
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 18
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 19
+      nodes: 1
+      is_acyclic: 'yes'
+  - component:
+      id: 20
+      nodes: 1
+      is_acyclic: 'yes'
+num_nodes_self_loops:
+  total: 9484
+  unique: 9484
+A: 15059201
+C: 12784604
+G: 12774611
+T: 15080215
+file_size_in_bytes: 180298876
+mean_links_length:
+  - length:
+      path: all_paths
+      in_node_space: 71241.5
+      in_nucleotide_space: 5.2189e+06
+      num_links_considered: 3059200
+      num_gap_links_not_penalized: 1213439
+sum_of_path_node_distances:
+  - distance:
+      path: all_paths
+      in_node_space: 239445
+      in_nucleotide_space: 240648
+      nodes: 3059322
+      nucleotides: 223286605
+      num_penalties: 1209149
+      num_penalties_different_orientation: 469587
