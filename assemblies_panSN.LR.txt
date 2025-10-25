@@ -1,0 +1,6 @@
+genomes/LR/ESE00019.renamed.fa
+genomes/LR/ESE00090.renamed.fa
+genomes/LR/ESE00418.renamed.fa
+genomes/LR/ESE01543.renamed.fa
+genomes/LR/LCP05531.renamed.fa
+genomes/LR/LCP06093.renamed.fa

@@ -1,0 +1,11 @@
+ESE00019_s00023	probably larger
+ESE00019_s00024	probably larger
+ESE00019_s00038	probably larger
+ESE00418_s00603	inversion might have screwed up element
+ESE00418_s00618	pairviz is bizarre 
+ESE01262_s00836 
+ESE01543_s01089	probably larger
+ESE01543_s01106	probably larger
+LCP05531_s01813	probably larger
+LCP05531_s01819	probably larger
+LCP06093_s01871	probably larger
