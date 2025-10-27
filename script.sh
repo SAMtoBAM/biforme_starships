@@ -216,7 +216,7 @@ rm temp.tsv
 ##now name the clusters and then append to the summary files
 awk -F '\t' '{for (i=1; i <= NF; i++) {print "cluster"NR "\t" $i}}' starships_SLRs.pairwise_containment.mcl.txt > starships_SLRs.pairwise_containment.mcl.clusters.txt
 
-echo "element;contig;start;end;cluster_contaiment;cluster_jaccard" | tr ';' '\t' > ${prefix}.starships_SLRs.plus_clusters.tsv
+echo "element;contig;start;end;cluster_contaiment;cluster_jaccard" | tr ';' '\t' > starships_SLRs.plus_clusters.tsv
 tail -n+2 starships_SLRs.tsv | awk '{print $1"\t"$3"\t"$4"\t"$5}' | while read line
 do
 SLR=$( echo "${line}" | awk '{print $1}' )
@@ -360,8 +360,77 @@ END {
         print ""
     }
 }
-' "$MATRIX" > starfish_coverage.summary_matrix.clusters.tsv
+' "$MATRIX" > starfish_coverage.summary_matrix.clusters_maxcontainment.tsv
 
+
+MATRIX="starfish_coverage.summary_matrix.tsv"
+CLUSTERS="SLR_starship_network_clustering/starships_SLRs.plus_clusters.tsv"
+
+awk -F'\t' -v CLUSTERS="$CLUSTERS" '
+BEGIN {
+    # Load cluster mapping
+    lineNo = 0
+    while ((getline line < CLUSTERS) > 0) {
+        lineNo++
+        if (lineNo == 1) continue  # skip header in clusters.tsv
+        split(line, f, "\t")
+        elem = f[1]
+        cluster = f[6]
+        elem2cluster[elem] = cluster
+        clusters[cluster] = 1
+    }
+    close(CLUSTERS)
+}
+
+NR==1 {
+    # Read header from matrix
+    for (i=2; i<=NF; i++) header[i] = $i
+    next
+}
+
+{
+    sample = $1
+    for (i=2; i<=NF; i++) {
+        elem = header[i]
+        val = $i
+        if (elem in elem2cluster) {
+            c = elem2cluster[elem]
+            sum[sample, c] += val
+            count[sample, c]++
+            samples[sample] = 1
+        }
+    }
+}
+
+END {
+    # Sort clusters
+    n = 0
+    for (c in clusters) clust_list[++n] = c
+    asort(clust_list)
+
+    # Header
+    printf "sampleID"
+    for (i=1; i<=n; i++) printf "\t%s", clust_list[i]
+    print ""
+
+    # Sort samples
+    m = 0
+    for (s in samples) sample_list[++m] = s
+    asort(sample_list)
+
+    # Output averaged matrix
+    for (i=1; i<=m; i++) {
+        s = sample_list[i]
+        printf "%s", s
+        for (j=1; j<=n; j++) {
+            c = clust_list[j]
+            avg = (count[s, c] ? sum[s, c] / count[s, c] : 0)
+            printf "\t%.6f", avg
+        }
+        print ""
+    }
+}
+' "$MATRIX" > starfish_coverage.summary_matrix.clusters_jaccard.tsv
 
 
 
